@@ -3,11 +3,16 @@
 
 function writeDate() {
     var date = new Date();
+    var day = date.getDate();
+	var month = date.getMonth();
+	month++;	// increment because January is 0
+	var year = date.getFullYear();
     var element = document.createElement('div');
     element.id = "date";
     document.body.appendChild(element);
     element.appendChild(document.createTextNode
-        (date.toDateString()));
+        //(date.toDateString()));
+		(month + "/" + day + "/" + year));
 }
 
 //// Write Time
@@ -17,7 +22,7 @@ function writeTime() {
     var hours = date.getHours();    // Grabbing times in sections to create AM/PM format
     var minutes = date.getMinutes();
     var seconds = date.getSeconds();
-    var ampm = hours >= 12 ? 'pm' : 'am';
+    var ampm = hours >= 12 ? 'PM' : 'AM';
     hours = hours % 12;
     hours = hours ? hours : 12;    // the hour '0' should be '12'
     minutes = minutes < 10 ? '0'+minutes : minutes;
@@ -156,15 +161,24 @@ function writeSilver() {
     });
 }
 
-//// Fade Remember Button
+//// Get ANU Quantum Random Number
 
-//function fadeButton() {
-//    $(#moment).fadeOut(1000);
-//}
-
-//$(this).fadeOut(2000, function() {
-//        $(this).empty().show();
-//        });
+function writeQuantum() {
+    $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        data: {},
+        url: '/server/scripts/proxy.php?url=http%3A%2F%2Fqrng.anu.edu.au%2FAPI%2FjsonI.php%3Flength%3D1%26type%3Duint16',	//proxy for json xdomain
+        success: function (msg) {
+            var number = msg["contents"]["data"][0];
+            var element = document.createElement('div');
+            element.id = "quantum";
+            document.body.appendChild(element);
+            element.appendChild(document.createTextNode
+            ("ANU Quantum Random Number: " + (number)));
+        }
+    });
+}
 
 
 //////////////////////////////////////// REMEMBER THIS MOMENT!
@@ -181,6 +195,7 @@ $(document).ready(function() {
         writeBTC();
         writeGold();
         writeSilver();
+        writeQuantum();
         
        // fadeButton();
        // mixpanel.track("Moment Generated");

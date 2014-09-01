@@ -161,6 +161,25 @@ function writeSilver() {
     });
 }
 
+//// Get Twitter Trends
+
+function writeTrends() {
+    $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        data: {},
+        url: '/server/scripts/tproxy.php?url='+encodeURIComponent('trends/place.json?id=23424977'),	//proxy for lame oauth1.1
+        success: function (msg) {
+            var number = msg["0"]["trends"][0]["name"];
+            var element = document.createElement('div');
+            element.id = "trends";
+            document.body.appendChild(element);
+            element.appendChild(document.createTextNode
+            ("Current Twitter Trend: " + (number)));
+        }
+    });
+}
+
 //// Get ANU Quantum Random Number
 
 function writeQuantum() {
@@ -168,7 +187,7 @@ function writeQuantum() {
         type: 'GET',
         dataType: 'json',
         data: {},
-        url: '/server/scripts/proxy.php?url=http%3A%2F%2Fqrng.anu.edu.au%2FAPI%2FjsonI.php%3Flength%3D1%26type%3Duint16',	//proxy for json xdomain
+        url: '/server/scripts/proxy.php?url=' + encodeURIComponent('http://qrng.anu.edu.au/API/jsonI.php?length=1&type=uint16'),	//proxy for json xdomain
         success: function (msg) {
             var number = msg["contents"]["data"][0];
             var element = document.createElement('div');
@@ -195,6 +214,7 @@ $(document).ready(function() {
         writeBTC();
         writeGold();
         writeSilver();
+        writeTrends();
         writeQuantum();
         
        // fadeButton();

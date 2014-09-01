@@ -198,7 +198,6 @@ $(document).ready(function() {
         writeQuantum();
         
        // fadeButton();
-       // mixpanel.track("Moment Generated");
 
     }); 
 });

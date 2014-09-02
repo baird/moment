@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+  <meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Remember this moment!">
@@ -12,23 +12,33 @@
 
 	<link href="client/styles/main.css" rel="stylesheet">
 
-    <link rel="apple-touch-icon-precomposed" href="public/img/touch.png">
-    <link rel="icon" href="public/img/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon-precomposed" href="public/img/touch.png">
+  <link rel="icon" href="public/img/favicon.ico" type="image/x-icon">
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<script type="text/javascript" src="https://www.google.com/jsapi"></script> <!-- News Feed -->
-
-<!-- <script src="https://api.twitter.com/1.1/trends/23424977
-.json?callback=onTrendData"></script>  Trending Twitter Feed -->
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
 
 <script type="text/javascript" src="client/scripts/main.js" ></script>
+<script type="text/javascript" src="client/scripts/particles.js" ></script>
 
 </head>
 
 <body>
 
-<div id="momentdiv">
-	<button id="moment" data-action="run">Remember this moment</button>
+<div id="titlediv">
+<h1>Remember this moment.</h1>
 </div>
+
+<div id="momentdiv" class="holder">
+  <a href="#" id="moment" class="uiButton" data-action="run">Remember this moment</a>
+</div>
+
+
+<div id="canvas-container">
+<canvas id="c"></canvas>
+</div>
+
+
 
 </body>

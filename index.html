@@ -20,7 +20,8 @@
 <script src="http://d3js.org/d3.v3.min.js"></script>
 
 <script type="text/javascript" src="client/scripts/main.js" ></script>
-<script type="text/javascript" src="client/scripts/particles.js" ></script>
+<script type="text/javascript" src="client/scripts/twitter.js" ></script>
+<!--<script type="text/javascript" src="client/scripts/particles.js" ></script>-->
 
 </head>
 
@@ -30,15 +31,94 @@
 <h1>Remember this moment.</h1>
 </div>
 
-<div id="momentdiv" class="holder">
-  <a href="#" id="moment" class="uiButton" data-action="run">Remember this moment</a>
+<div id="buttondiv">
+	<a class="btn" id="moment" data-action="run" href="#">Never Forget</a>
 </div>
 
-
-<div id="canvas-container">
+<!--<div id="canvas-container">
 <canvas id="c"></canvas>
+</div>-->
+
+<div class="container">
+      <div class="row">
+
+        <div id="datediv" class="col-md-4">
+          <h2 id="dateheader"></h2>
+        </div>
+
+        <div id="trenddiv" class="col-md-4">
+          <h2 id="trendheader"></h2>
+        </div>
+
+        <div id="quantumdiv" class="col-md-4">
+          <h2 id="quantumheader"></h2>
+        </div>
+
+      </div>
 </div>
 
+<div class="container">
+      <div class="row">
 
+        <div id="btcdiv" class="col-md-4">
+          <h2 id="btcheader"></h2>
+        </div>
+
+        <div id="golddiv" class="col-md-4">
+          <h2 id="goldheader"></h2>
+        </div>
+
+        <div id="silverdiv" class="col-md-4">
+          <h2 id="silverheader"></h2>
+        </div>
+
+      </div>
+</div>
+
+<div class="container">
+      <div class="row">
+
+        <div id="quakediv" class="col-md-4">
+          <h2 id="quakeheader"></h2>
+        </div>
+
+        <div id="magdiv" class="col-md-4">
+          <h2 id="magheader"></h2>
+        </div>
+
+        <div id="moondiv" class="col-md-4">
+          <h2 id="moonheader"></h2>
+        </div>
+
+      </div>
+</div>
+
+<div class="container">
+      <div class="row">
+
+        <div id="newsdiv" class="col-md-12">
+          <h2 id="newsheader"></h2>
+        </div>
+
+      </div>
+</div>
+
+<br>
+
+<div id="footer"> 
+	<h3>A real-time data experiment by <a href="https://github.com/baird" target="_blank">Baird Castleberry</a>.</h3>
+</div>
+
+<div id="again">
+	<a href="/">Do it again!</a>
+</div>
+
+<div id="questions">
+	<a href "#" id="question" data-action="run">Questions?</a>
+</div>
+
+<div id="twitterdiv">
+	<a href="#" onclick="twitClick();" >Share this!</a>
+</div>
 
 </body>

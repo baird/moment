@@ -3,6 +3,8 @@ moment
 
 Example project based on real-time feeds and open data to define a moment in time...
 
+Working demo here: http://bairdcastleberry.com/moment/
+
 Sources
 ======
 

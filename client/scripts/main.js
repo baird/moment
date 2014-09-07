@@ -19,7 +19,7 @@ function writeDate() {
     var element = document.createElement('div');
     //element.id = "date";    // could name this div
     document.getElementById('datediv').appendChild(element);
-    datediv.style.cssText = 'border: 1px solid #333333;font-size:30px;color:#FBD258;height:100px;background-color:rgba(0,0,0,0.3);';
+    datediv.style.cssText = 'font-size:28px;color:#FBD258;height:110px;background-color:rgba(0,0,0,0.3);background-clip:content-box;padding-top:5px;padding-bottom:5px;';
     datediv.style.fontFamily="Roboto Condensed', Arial, Sans-serif";
     element.appendChild(document.createTextNode
 	(month + "/" + day + "/" + year + " | " + (time)));
@@ -43,7 +43,7 @@ function writeTrends() {
             var trend = msg["0"]["trends"][0]["name"];
             var element = document.createElement('span');
             document.getElementById('trenddiv').appendChild(element);
-            trenddiv.style.cssText = 'border: 1px solid #333333;font-size:25px;color:#DB634F;height:100px;background-color:rgba(0,0,0,0.3);';
+            trenddiv.style.cssText = 'font-size:25px;color:#DB634F;height:110px;background-color:rgba(0,0,0,0.3);background-clip:content-box;padding-top:5px;padding-bottom:5px;';
             trenddiv.style.fontFamily="Roboto Condensed', Arial, Sans-serif";
             element.appendChild(document.createTextNode
             ((trend)));
@@ -70,7 +70,7 @@ function writeQuantum() {
             var number = msg["contents"]["data"][0];
             var element = document.createElement('div');
             document.getElementById('quantumdiv').appendChild(element);
-            quantumdiv.style.cssText = 'border: 1px solid #333333;font-size:50px;color:#40B47F;height:100px;background-color:rgba(0,0,0,0.3);';
+            quantumdiv.style.cssText = 'font-size:50px;color:#40B47F;height:110px;background-color:rgba(0,0,0,0.3);background-clip:content-box;padding-top:5px;padding-bottom:5px;';
             quantumdiv.style.fontFamily="Roboto Condensed', Arial, Sans-serif";
             element.appendChild(document.createTextNode
             ((number)));
@@ -78,7 +78,7 @@ function writeQuantum() {
             document.getElementById('quantumheader').appendChild(element);
             quantumheader.style.cssText = 'font-size:15px;';
             element.appendChild(document.createTextNode
-            ("Quantum Number"));
+            ("Current Quantum Number"));
             $('#quantumdiv').hide().fadeIn(4000)
         }
     });
@@ -100,19 +100,21 @@ function writeBTC() {
         success: function (msg) {
             var number = msg["BTC"]["USD"];
             var element = document.createElement('div');
+            var decimals = Math.round(number * 100) / 100;
+            var amount = decimals.toFixed(2);
             
             //element.id = "btc";    // if you need to id the div created above
 
             //document.body.appendChild(element);    // add div directly
 
             document.getElementById('btcdiv').appendChild(element);    // add div to another div
-            btcdiv.style.cssText = 'border: 1px solid #333333;font-size:50px;color:#F29A3F;height:100px;background-color:rgba(0,0,0,0.3);';
+            btcdiv.style.cssText = 'font-size:50px;color:#F29A3F;height:110px;background-color:rgba(0,0,0,0.3);background-clip:content-box;padding-top:5px;padding-bottom:5px;';
             btcdiv.style.fontFamily="Roboto Condensed', Arial, Sans-serif";
 
             //document.getElementById('btcdiv').style.backgroundImage="url('/public/img/000.png')";     // add bg image
 
             element.appendChild(document.createTextNode
-            ("$" + Math.round(number * 100) / 100));
+            ("$" + amount));
 
             // Let's add the header
 
@@ -138,11 +140,13 @@ function writeGold() {
         success: function (msg) {
             var number = msg["Gold"]["USD"];
             var element = document.createElement('div');
+            var decimals = Math.round(number * 100) / 100;    // 2 decimal places
+            var amount = decimals.toFixed(2);    // forces all 2 decimals even with trailing zero
             document.getElementById('golddiv').appendChild(element);
-            golddiv.style.cssText = 'border: 1px solid #333333;font-size:50px;color:#1D8281;height:100px;background-color:rgba(0,0,0,0.3);';
+            golddiv.style.cssText = 'font-size:50px;color:#1D8281;height:110px;background-color:rgba(0,0,0,0.3);background-clip:content-box;padding-top:5px;padding-bottom:5px;';
             golddiv.style.fontFamily="Roboto Condensed', Arial, Sans-serif";
             element.appendChild(document.createTextNode
-            ("$" + Math.round(number * 100) / 100));
+            ("$" + amount));
             var element = document.createElement('div');
             document.getElementById('goldheader').appendChild(element);
             goldheader.style.cssText = 'font-size:15px;';
@@ -164,11 +168,13 @@ function writeSilver() {
         success: function (msg) {
             var number = msg["Silver"]["USD"];
             var element = document.createElement('div');
+            var decimals = Math.round(number * 100) / 100;
+            var amount = decimals.toFixed(2);
             document.getElementById('silverdiv').appendChild(element);
-            silverdiv.style.cssText = 'border: 1px solid #333333;font-size:50px;color:#FBD258;height:100px;background-color:rgba(0,0,0,0.3);';
+            silverdiv.style.cssText = 'font-size:50px;color:#FBD258;height:110px;background-color:rgba(0,0,0,0.3);background-clip:content-box;padding-top:5px;padding-bottom:5px;';
             silverdiv.style.fontFamily="Roboto Condensed', Arial, Sans-serif";
             element.appendChild(document.createTextNode
-            ("$" + Math.round(number * 100) / 100));
+            ("$" + amount));
             var element = document.createElement('div');
             document.getElementById('silverheader').appendChild(element);
             silverheader.style.cssText = 'font-size:15px;';
@@ -194,7 +200,7 @@ function writeQuake() {
             var quakePlace = msg["features"][0]["properties"]["place"];
             var element = document.createElement('div');
             document.getElementById('quakediv').appendChild(element);
-            quakediv.style.cssText = 'border: 1px solid #333333;font-size:28px;color:#DB634F;height:100px;background-color:rgba(0,0,0,0.3);';
+            quakediv.style.cssText = 'font-size:25px;color:#DB634F;height:110px;background-color:rgba(0,0,0,0.3);background-clip:content-box;padding-top:5px;padding-bottom:5px;';
             quakediv.style.fontFamily="Roboto Condensed', Arial, Sans-serif";
             element.appendChild(document.createTextNode
             ((quakePlace)));
@@ -205,7 +211,7 @@ function writeQuake() {
             ("Current Earthquake"));
             var element = document.createElement('div');
             document.getElementById('magdiv').appendChild(element);
-            magdiv.style.cssText = 'border: 1px solid #333333;font-size:50px;color:#44BF87;height:100px;background-color:rgba(0,0,0,0.3);';
+            magdiv.style.cssText = 'font-size:50px;color:#44BF87;height:110px;background-color:rgba(0,0,0,0.3);background-clip:content-box;padding-top:5px;padding-bottom:5px;';
             magdiv.style.fontFamily="Roboto Condensed', Arial, Sans-serif";
             element.appendChild(document.createTextNode
             ((quakeMag)));
@@ -213,7 +219,7 @@ function writeQuake() {
             document.getElementById('magheader').appendChild(element);
             magheader.style.cssText = 'font-size:15px;';
             element.appendChild(document.createTextNode
-            ("Earthquake Magnitude"));
+            ("Current Earthquake Magnitude"));
             $('#quakediv').hide().fadeIn(4000)
             $('#magdiv').hide().fadeIn(4000)
         }
@@ -231,12 +237,13 @@ google.load("feeds", "1");
         if (!result.error) {
           for (var i = 0; i < result.feed.entries.length; i++) {
             var entry = result.feed.entries[i];
+            var stripped = entry.title.replace("Current Moon Phase:", '');    // Let's strip some of the output
             var element = document.createElement("div");
             document.getElementById('moondiv').appendChild(element);
-            moondiv.style.cssText = 'border: 1px solid #333333;font-size:28px;color:#F29A3F;height:100px;background-color:rgba(0,0,0,0.3);';
+            moondiv.style.cssText = 'font-size:32px;color:#F29A3F;height:110px;background-color:rgba(0,0,0,0.3);background-clip:content-box;padding-top:5px;padding-bottom:5px;';
             moondiv.style.fontFamily="Roboto Condensed', Arial, Sans-serif";
             element.appendChild(document.createTextNode
-            (entry.title));
+            (stripped));
             google.setOnLoadCallback(writeMoon);  // put this inside function to write after click
             var element = document.createElement('div');
             document.getElementById('moonheader').appendChild(element);
@@ -262,7 +269,7 @@ google.load("feeds", "1");
             var entry = result.feed.entries[i];
             var element = document.createElement("div");
             document.getElementById('newsdiv').appendChild(element);
-            newsdiv.style.cssText = 'border: 1px solid #333333;font-size:20px;color:#1D8281;height:110px;background-color:rgba(0,0,0,0.3);';
+            newsdiv.style.cssText = 'font-size:20px;color:#1D8281;height:120px;background-color:rgba(0,0,0,0.3);background-clip:content-box;padding-top:5px;padding-bottom:5px;';
             newsdiv.style.fontFamily="Roboto Condensed', Arial, Sans-serif";
             element.appendChild(document.createTextNode
                 (entry.title));
@@ -302,37 +309,46 @@ $(document).ready(function() {
         $('#twitterdiv').hide().fadeIn(4000)
 
 
-
-
     }); 
 });
 
 //// Questions
 
 $(document).ready(function() {
-    $("#questions[data-action]").click(function(){
+    $("#questionlink[data-action]").click(function(){
 
-        $('#datediv').hide().fadeOut(4000)
-        $('#trenddiv').hide().fadeOut(4000)
-        $('#quantumdiv').hide().fadeOut(4000)
-        $('#btcdiv').hide().fadeOut(5000)
-        $('#golddiv').hide().fadeOut(5000)
-        $('#silverdiv').hide().fadeOut(5000)
-        $('#quakediv').hide().fadeOut(6000)
-        $('#magdiv').hide().fadeOut(6000)
-        $('#moondiv').hide().fadeOut(6000)
-        $('#newsdiv').hide().fadeOut(7000)
+        $('#footer').fadeOut(1000)
+        $('#again').fadeOut(1000)
+        $('#questions').fadeOut(1000)
+        $('#twitterdiv').fadeOut(1000)
 
-        $('#footer').hide().fadeOut(8000)
-        $('#again').hide().fadeOut(8000)
-        $('#questions').hide().fadeOut(8000)
+        $('#newsdiv').fadeOut(500)
+        $('#quakediv').fadeOut(1000)
+        $('#magdiv').fadeOut(1000)
+        $('#moondiv').fadeOut(1000)
+        $('#btcdiv').fadeOut(1500)
+        $('#golddiv').fadeOut(1500)
+        $('#silverdiv').fadeOut(1500)
+        $('#datediv').fadeOut(2000)
+        $('#trenddiv').fadeOut(2000)
+        $('#quantumdiv').fadeOut(2000)
 
-        $('#buttondiv').fadeIn(8000)
-        $('#footer').hide().fadeIn(8000)
-        $('#again').hide().fadeIn(4000)
-
-
+        $('#footer').delay(2000).hide().fadeIn(2000)
+        $('#again').delay(2000).hide().fadeIn(2000)
+        $('#questions').delay(2000).hide()
+        $('#twitterdiv').delay(2000).hide().fadeIn(2000)
+        $('#questionsbox').delay(2000).hide().fadeIn(2000)
 
     }); 
 });
 
+
+//// Twitter
+
+$(document).ready(function() {
+    $("#twitterlink[data-action]").click(function(){
+
+        twitClick();
+
+    }); 
+});
